@@ -10,10 +10,19 @@ function addTask(){
   const ul = document.querySelector('#task-list');  //ul
   console.log(ul);
   const taskList = input.value;
-   if(taskList === ''){
+  const repetation = document.querySelectorAll('li');
+  for(let i=0; i < repetation.length; i++){
+    if(repetation[i].firstChild.textContent === taskList){
+      alert('item already exists in the list');
+    input.value = '';
+      return;
+    }
+}
+     if(taskList === ''){
     alert('Please enter the list items');
     return;
    }
+   
    const listItem = document.createElement('li');
   
  
@@ -50,9 +59,11 @@ function addTask(){
     const doButton = document.querySelector('.done');
     doButton.remove();
     
-   })
+   });
+
  
   
    input.value = '';
+
 }
 button.addEventListener('click',addTask );
